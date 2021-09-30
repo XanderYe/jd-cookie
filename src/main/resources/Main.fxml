@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="770.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.xanderye.controller.MainController">
+   <children>
+      <BorderPane fx:id="borderPane" layoutY="33.0" prefHeight="736.0" prefWidth="414.0" />
+      <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#copyCookie" prefHeight="25.0" prefWidth="100.0" text="复制cookie" />
+      <Button layoutX="137.0" layoutY="4.0" mnemonicParsing="false" onAction="#clearAndRefresh" prefHeight="25.0" prefWidth="100.0" text="清除cookie" />
+   </children>
+</AnchorPane>
