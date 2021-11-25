@@ -2,12 +2,14 @@ package cn.xanderye.controller;
 
 import cn.xanderye.config.Config;
 import cn.xanderye.util.JavaFxUtil;
+import cn.xanderye.util.PropertyUtil;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.Cookie;
 import com.teamdev.jxbrowser.chromium.CookieStorage;
 import com.teamdev.jxbrowser.chromium.javafx.BrowserView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,6 +30,8 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     @FXML
     private BorderPane borderPane;
+    @FXML
+    private ComboBox<String> numBox;
 
     private final Config config = Config.getInstance();
 
@@ -35,7 +39,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        PropertyUtil.init();
         Browser browser = new Browser();
         clearCookie(browser);
         browser.setUserAgent("Mozilla/5.0 (iPhone; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.25 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1");
@@ -43,6 +47,23 @@ public class MainController implements Initializable {
         BrowserView view = new BrowserView(browser);
         borderPane.setCenter(view);
         browser.loadURL(JD_URL);
+        String numbers = PropertyUtil.get("phone.numbers");
+        if (null != numbers) {
+            String[] numberArray = numbers.split(",");
+            for (String s : numberArray) {
+                numBox.getItems().add(s);
+            }
+        }
+    }
+
+    public void inputNum() {
+        String num = numBox.getValue();
+        if (num == null) {
+            JavaFxUtil.alertDialog("错误", "请先选择号码");
+            return;
+        }
+        Browser browser = config.getBrowser();
+        browser.executeJavaScript("document.getElementsByClassName('acc-input mobile J_ping')[0].value = " + num);
     }
 
     public void copyCookie() {
