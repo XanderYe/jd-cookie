@@ -59,7 +59,7 @@ public class MainController implements Initializable {
     public void inputNum() {
         String num = numBox.getValue();
         if (num == null) {
-            JavaFxUtil.alertDialog("错误", "请先选择号码");
+            JavaFxUtil.errorDialog("错误", "请先选择号码");
             return;
         }
         Browser browser = config.getBrowser();
