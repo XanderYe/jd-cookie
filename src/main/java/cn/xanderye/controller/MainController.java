@@ -35,7 +35,7 @@ public class MainController implements Initializable {
 
     private final Config config = Config.getInstance();
 
-    private static final String JD_URL = "https://m.jd.com";
+    private static final String JD_URL = "https://home.m.jd.com/myJd/home.action";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
