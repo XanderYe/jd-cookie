@@ -63,7 +63,7 @@ public class MainController implements Initializable {
             return;
         }
         Browser browser = config.getBrowser();
-        browser.executeJavaScript("document.getElementsByClassName('acc-input mobile J_ping')[0].value = " + num);
+        browser.executeJavaScript("var number='" + num + "';var evt=new InputEvent('input',{inputType:'insertText',data:number,dataTransfer:null,isComposing:false});document.getElementsByClassName('acc-input mobile J_ping')[0].value=number;document.getElementsByClassName('acc-input mobile J_ping')[0].dispatchEvent(evt);document.getElementsByClassName('policy_tip-checkbox')[0].click();");
     }
 
     public void copyCookie() {
