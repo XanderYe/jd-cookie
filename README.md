@@ -31,3 +31,6 @@
 ## 界面展示
 
 ![](doc/gui.png)
+
+## 安卓版
+[jdck-android](https://github.com/XanderYe/jdck-android)
